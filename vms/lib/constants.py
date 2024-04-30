@@ -1,5 +1,7 @@
 from django.utils.translation import gettext_lazy as _
-
+'''
+This is constant file which contains allt the constant required in this project
+'''
 
 class Action:
     CREATE = "create"

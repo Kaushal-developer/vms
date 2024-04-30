@@ -17,6 +17,10 @@ RESPONSE_MESSAGE = {
 }
 
 
+'''
+JSON Rendere
+'''
+
 class CustomJSONRenderer(renderers.JSONRenderer):
     def render(self, data, accepted_media_type=None, renderer_context=None):
         status_code = renderer_context['response'].status_code
@@ -59,24 +63,27 @@ class CustomJSONRenderer(renderers.JSONRenderer):
                     response['error'] = data
         return JsonResponse(data=response)
     
+'''
+HTML Renderer
+Not used in the project
+'''
+# class CustomHTMLRenderer(BaseRenderer):
+#     media_type = 'text/html'
+#     format = 'html'
+#     charset = 'utf-8'
 
-class CustomHTMLRenderer(BaseRenderer):
-    media_type = 'text/html'
-    format = 'html'
-    charset = 'utf-8'
+#     def render(self, data, accepted_media_type=None, renderer_context=None):
+#         status_code = renderer_context['response'].status_code
+#         api_response_message = data.pop('message', RESPONSE_MESSAGE.get(status_code, None))
 
-    def render(self, data, accepted_media_type=None, renderer_context=None):
-        status_code = renderer_context['response'].status_code
-        api_response_message = data.pop('message', RESPONSE_MESSAGE.get(status_code, None))
+#         if status_code in [status.HTTP_200_OK, status.HTTP_201_CREATED, status.HTTP_204_NO_CONTENT]:
+#             template_name = 'success.html'
+#         else:
+#             template_name = 'error.html'
 
-        if status_code in [status.HTTP_200_OK, status.HTTP_201_CREATED, status.HTTP_204_NO_CONTENT]:
-            template_name = 'success.html'
-        else:
-            template_name = 'error.html'
+#         context = {
+#             'message': api_response_message,
+#             'data': data,
+#         }
 
-        context = {
-            'message': api_response_message,
-            'data': data,
-        }
-
-        return render(renderer_context['request'], template_name, context)
+#         return render(renderer_context['request'], template_name, context)

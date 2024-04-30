@@ -3,6 +3,7 @@ from django.db.models import ForeignObjectRel, ManyToManyRel, OneToOneRel, Boole
 from model_utils.models import TimeStampedModel
 from django_lifecycle import LifecycleModelMixin
 
+'''Custom Base Model-> Fields which are common to all the table should be mention here.'''
 class BaseModel(LifecycleModelMixin,TimeStampedModel):
     ORDERING = ("-created",)
 

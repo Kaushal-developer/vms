@@ -1,5 +1,7 @@
 from rest_framework import pagination
-
+'''
+Customer Paginator clas for the listing api
+'''
 
 class CustomPagination(pagination.LimitOffsetPagination):
     default_limit = 10

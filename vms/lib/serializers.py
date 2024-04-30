@@ -5,7 +5,7 @@ from . import helpers
 
 User = get_user_model()
 
-
+''' Write operatoin allowed'''
 class DynamicFieldsModelSerializer(serializers.ModelSerializer):
     """
     A ModelSerializer that takes an additional `fields` argument that
@@ -86,7 +86,7 @@ class DynamicFieldsModelSerializer(serializers.ModelSerializer):
 
         return super(DynamicFieldsModelSerializer, self).to_representation(instance=instance)
 
-
+''' Only read operation allowed'''
 class ReadOnlyModelSerializer(DynamicFieldsModelSerializer):
     def get_fields(self):
         fields = super().get_fields()

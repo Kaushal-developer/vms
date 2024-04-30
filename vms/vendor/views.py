@@ -10,7 +10,7 @@ from . import serializers
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-
+# No need to define any default action as they are customized in Base Viewset
 
 class VendorViewSet(BaseViewSet):
     model = models.Vendor

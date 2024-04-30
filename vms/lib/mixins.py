@@ -8,7 +8,7 @@ from rest_framework.response import Response
 
 logger = logging.getLogger(__name__)
 
-
+''' Customer view set mixing for the BaseViews which can do below operations.'''
 class ViewSetMixin:
     permission_classes = (permissions.IsAuthenticated,)
     
@@ -34,7 +34,7 @@ class ViewSetMixin:
         serializer.save(updated_by=self.request.user.username)
 
     def perform_destroy(self, instance):
-        instance.delete9()
+        instance.delete()
         
     def handle_exception(self, exc):
         if not getattr(exc, "status_code", False):

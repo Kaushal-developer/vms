@@ -31,7 +31,9 @@ class BaseGenericViewSet(mixins.ViewSetMixin, viewsets.GenericViewSet):
         response = BaseViewSet.get_choices_for_model_fields(self.model)
         return Response(data=response, status=status.HTTP_200_OK)
 
-
+'''
+Custom View set which have all the customize CRUD methods With custom response message benefits
+'''
 class BaseViewSet(mixins.ViewSetMixin, viewsets.ModelViewSet):
     model = None
     filterset_class = None
